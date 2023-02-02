@@ -21,7 +21,7 @@ class ServiceContainerTest extends TestCase
         self::assertEquals('Foo', $foo1->foo());
         self::assertEquals('Foo', $foo2->foo());
         self::assertNotSame($foo1, $foo2);
-        
+
     }
 
     public function testBind()
@@ -33,13 +33,13 @@ class ServiceContainerTest extends TestCase
             return new Person("dani", "ganteng");
         });
 
-        $person1 = $this->app->make(Person::class); //closure > new Person("dani", "ganteng") 
+        $person1 = $this->app->make(Person::class); //closure > new Person("dani", "ganteng")
         $person2 = $this->app->make(Person::class); //closure > new Person("dani", "ganteng"
 
         self::assertEquals("dani", $person1->firstname);
         self::assertEquals("dani", $person2->firstname);
         self::assertNotSame($person1, $person2);
-        
+
     }
 
     public function testSingleton()
@@ -54,7 +54,7 @@ class ServiceContainerTest extends TestCase
         self::assertEquals("dani", $person1->firstname);
         self::assertEquals("dani", $person2->firstname);
         self::assertSame($person1, $person2);
-        
+
     }
 
     public function testInstance()
@@ -68,7 +68,7 @@ class ServiceContainerTest extends TestCase
         self::assertEquals("dani", $person1->firstname);
         self::assertEquals("dani", $person2->firstname);
         self::assertSame($person1, $person2);
-        
+
     }
 
     public function testDependencyInjection()
@@ -85,7 +85,7 @@ class ServiceContainerTest extends TestCase
         $foo = $this->app->make(Foo::class);
         $bar1 = $this->app->make(Bar::class);
         $bar2 = $this->app->make(Bar::class);
-        
+
         self::assertSame($foo, $bar1->foo);
         self::assertSame($bar1, $bar2);
     }
@@ -101,7 +101,8 @@ class ServiceContainerTest extends TestCase
         $helloService = $this->app->make(HelloService::class);
 
         self::assertEquals('Halo dani', $helloService->hello('dani'));
-        
+
     }
+
 
 }
