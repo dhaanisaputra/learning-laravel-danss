@@ -27,3 +27,13 @@ Route::fallback( function () {
    return "404 by dansss";
 });
 
+Route::view('/hello', 'hello', ['name' => 'Dani']);
+//atau
+Route::get('hello-again', function () {
+   return view('hello', ['name' => 'Dani']);
+});
+
+//in directory
+Route::get('hello-world', function () {
+    return view('hello.world', ['name' => 'Dani']);
+});
