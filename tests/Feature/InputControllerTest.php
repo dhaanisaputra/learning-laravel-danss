@@ -56,4 +56,15 @@ class InputControllerTest extends TestCase
             ->assertSeeText("Asus ROG");
     }
 
+    public function testInputType()
+    {
+        $this->post('/input/type', [
+            'name'=>'dans',
+            'married'=>'true',
+            'birth_date'=>'2000-01-01'
+        ])->assertSeeText('dans')
+            ->assertSeeText("true")
+            ->assertSeeText("2000-01-01");
+    }
+
 }
